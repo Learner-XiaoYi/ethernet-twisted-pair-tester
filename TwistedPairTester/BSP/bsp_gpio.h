@@ -2,6 +2,7 @@
 #define __BSP_GPIO_H
 
 #include "main.h"
+#include "gpio.h"
 
 typedef struct
 {
@@ -9,10 +10,16 @@ typedef struct
     uint16_t pin;
 }BSP_GPIO_t;
 
+typedef enum
+{
+    BSP_GPIO_LOW = 0,
+    BSP_GPIO_HIGH
+}BSP_GPIO_Level_t;
+
+void BSP_GPIO_Init(void);
 void BSP_GPIO_Set(BSP_GPIO_t *gpio);
 void BSP_GPIO_Reset(BSP_GPIO_t *gpio);
 void BSP_GPIO_Toggle(BSP_GPIO_t *gpio);
-GPIO_PinState BSP_GPIO_Read(BSP_GPIO_t *gpio);
+BSP_GPIO_Level_t  BSP_GPIO_Read(BSP_GPIO_t *gpio);
 
 #endif
-
