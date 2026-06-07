@@ -1,4 +1,10 @@
 #include "drv_cable_test.h"
+/*线序检测采用逐线扫描方式，每次仅驱动一根发送线输出高电平，其余保持低电平，然后读取接收端8路输入。
+	根据接收端哪一路检测到高电平，建立发送端与接收端的对应关系，
+	最终判断映射关系是否为1对1对应，从而检测线序是否正确。
+*/
+
+
 
 static BSP_GPIO_t tx_pin[8] =
 {
@@ -27,16 +33,16 @@ static BSP_GPIO_t rx_pin[8] =
 static BSP_GPIO_t shield_tx_pin[] = {GPIOB,GPIO_PIN_1};
 static BSP_GPIO_t shield_rx_pin[] = {GPIOG,GPIO_PIN_9};
 
-static uint8_t map[8];      //发送
+//static uint8_t map[8];      //发送
 static uint8_t rx_state[8]; //接收
 
 void CableTest_Init(void)
 {
-    for(int i=0;i<8;i++)
-    {
-        map[i] = 0xFF;
-        rx_state[i] = 0;
-    }
+//    for(int i=0;i<8;i++)
+//    {
+//        map[i] = 0xFF;
+//        rx_state[i] = 0;
+//    }
 }
 
 static void CableTest_Send(uint8_t index)
@@ -56,14 +62,16 @@ static void CableTest_Read(void)
     }
 }
 
+CableType_t cable;
+
 //类型判断
-uint8_t CableType_Detect(void)
+void CableType_Detect(void)
 {
 	BSP_GPIO_Write(shield_rx_pin,GPIO_LOW);
 	BSP_GPIO_Write(shield_tx_pin,GPIO_HIGH);
 	uint8_t text = BSP_GPIO_Reset(shield_rx_pin);
-	if(text == 1) return 1; //  SFTP屏蔽
-	else return 0; 					//非屏蔽UTP
+	if(text == 1) cable = CABLE_SFTP; //  SFTP屏蔽
+	else cable = CABLE_UTP; 					//非屏蔽UTP
 }
 
 //线序排查
@@ -84,7 +92,7 @@ uint8_t CableTest_RunOnce(void)
         // 采样
         CableTest_Read();
 
-        // 4. 找唯一响应
+        // 找唯一响应
         uint8_t count = 0;
         uint8_t rx_j = 0xFF;
 
