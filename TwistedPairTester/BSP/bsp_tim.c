@@ -13,6 +13,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     }
 }
 
+void BSP_Delay(uint16_t ms)
+{
+	HAL_Delay(ms);
+}
+
 
 void BSP_TIM_Init(void)
 {
@@ -23,3 +28,5 @@ uint32_t BSP_GetTick(void)
 {
     return ms_tick;
 }
+
+

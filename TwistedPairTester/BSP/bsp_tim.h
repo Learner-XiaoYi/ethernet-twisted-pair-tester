@@ -7,5 +7,6 @@
 void BSP_TIM_Init(void);
 
 uint32_t BSP_GetTick(void);
+void BSP_Delay(uint16_t ms);
 
 #endif
