@@ -1,11 +1,12 @@
 #include "bsp_gpio.h"
 
+//µ•¥Œ
 void BSP_GPIO_Init(void)
 {
     MX_GPIO_Init();
 }
 
-
+//÷ÿ∏¥
 void BSP_GPIO_Mode(BSP_GPIO_t gpio, BSP_GPIO_Mode_t mode)
 {
     GPIO_InitTypeDef GPIO_InitStruct = {0};
