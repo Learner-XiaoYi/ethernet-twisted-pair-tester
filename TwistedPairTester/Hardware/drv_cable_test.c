@@ -36,13 +36,17 @@ static BSP_GPIO_t shield_rx_pin[] = {GPIOG,GPIO_PIN_9};
 //static uint8_t map[8];      //发送
 static uint8_t rx_state[8]; //接收
 
-void CableTest_Init(void)
+void HW_Cable_Init(void)
 {
-//    for(int i=0;i<8;i++)
-//    {
-//        map[i] = 0xFF;
-//        rx_state[i] = 0;
-//    }
+    uint8_t i;
+
+    for(i = 0; i < 8; i++)
+    {
+        BSP_GPIO_Mode(tx_pin[i], GPIO_MODE_OUTPUT_PP);
+        BSP_GPIO_Write(&tx_pin[i], BSP_GPIO_LOW);
+
+        BSP_GPIO_Mode(rx_pin[i], GPIO_MODE_INPUT);
+    }
 }
 
 static void CableTest_Send(uint8_t index)
@@ -50,7 +54,7 @@ static void CableTest_Send(uint8_t index)
     for(uint8_t i=0;i<8;i++)
     {
         BSP_GPIO_Write(&tx_pin[i],
-                      (i == index) ? GPIO_HIGH : GPIO_LOW);
+                      (i == index) ? BSP_GPIO_HIGH : BSP_GPIO_LOW);
     }
 }
 
@@ -67,8 +71,8 @@ CableType_t cable;
 //类型判断
 void CableType_Detect(void)
 {
-	BSP_GPIO_Write(shield_rx_pin,GPIO_LOW);
-	BSP_GPIO_Write(shield_tx_pin,GPIO_HIGH);
+	BSP_GPIO_Write(shield_rx_pin,BSP_GPIO_LOW);
+	BSP_GPIO_Write(shield_tx_pin,BSP_GPIO_HIGH);
 	uint8_t text = BSP_GPIO_Reset(shield_rx_pin);
 	if(text == 1) cable = CABLE_SFTP; //  SFTP屏蔽
 	else cable = CABLE_UTP; 					//非屏蔽UTP
@@ -79,7 +83,7 @@ uint8_t CableTest_RunOnce(void)
 {
     uint8_t local_map[8];
 
-    CableTest_Init();
+//    CableTest_Init();
 
     for(uint8_t tx=0; tx<8; tx++)
     {
@@ -130,7 +134,7 @@ uint8_t CableTest_CheckOpen(void)
 		// 发送全部置高
     for(uint8_t i=0;i<8;i++)
     {
-        BSP_GPIO_Write(&tx_pin[i], GPIO_HIGH);
+        BSP_GPIO_Write(&tx_pin[i], BSP_GPIO_HIGH);
     }
 
     // 等待稳定
