@@ -5,7 +5,7 @@ const float CnumTemp_SFTP = 53.0f;
 const float CnumTemp_UTP = 65.0;
 
 
-//ÆµÂÊ×ªµçÈÝ  Ctemp = (1 / (0.693147 * (Res1 + 2 * Res2) * FreqNum)) * 1000000000000;
+//é¢‘çŽ‡è½¬ç”µå®¹  Ctemp = (1 / (0.693147 * (Res1 + 2 * Res2) * FreqNum)) * 1000000000000;
 float Length_ConvertFreqToCap(void)
 {
 	uint16_t FreqNum = 0;
@@ -15,7 +15,7 @@ float Length_ConvertFreqToCap(void)
 	return Ctemp;
 }
 
-//µçÈÝ×ª³¤¶È  LongNum = (Ctemp - Cbegin) / result_float;
+//ç”µå®¹è½¬é•¿åº¦  LongNum = (Ctemp - Cbegin) / result_float;
 float Length_ConvertCapToMeter(float cap_total, float cap_offset_utp, float cap_offset_sftp)
 {
     float length = 0.0f;

@@ -1,7 +1,7 @@
 #include "hw_cable.h"
 
 //PD0
-static BSP_GPIO_t length_meas_pin[] = {GPIOD, GPIO_PIN_1}; //³¤¶È²âÁ¿Ïß
+static BSP_GPIO_t length_meas_pin[] = {GPIOD, GPIO_PIN_1}; //é•¿åº¦æµ‹é‡çº¿
 
 void Length_Init(void)
 {
@@ -15,7 +15,7 @@ uint8_t HW_Length_Task(void)
 	return temp;
 }
 
-//1s¼ÆÊı
+//1sè®¡æ•°
 uint16_t HW_Length_GetCount(void)
 {
 	uint16_t temp = 0;
