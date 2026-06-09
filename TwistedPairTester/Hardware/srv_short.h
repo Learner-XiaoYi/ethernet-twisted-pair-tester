@@ -14,6 +14,5 @@ typedef struct
 } HW_ChannelMap_t;
 
 
-
 #endif
 

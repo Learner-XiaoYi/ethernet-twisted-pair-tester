@@ -30,11 +30,6 @@ typedef enum
     BSP_GPIO_HIGH
 }BSP_GPIO_Level_t;
 
-//typedef enum
-//{
-//    GPIO_LOW,
-//    GPIO_HIGH
-//} gpio_level_t;
 
 
 void BSP_GPIO_Init(void);
