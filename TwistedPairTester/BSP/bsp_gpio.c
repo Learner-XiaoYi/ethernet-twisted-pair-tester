@@ -61,7 +61,7 @@ void BSP_GPIO_Set(BSP_GPIO_t *gpio)
                       GPIO_PIN_SET);
 }
 
-uint8_t BSP_GPIO_Reset(BSP_GPIO_t *gpio)
+void BSP_GPIO_Reset(BSP_GPIO_t *gpio)
 {
     HAL_GPIO_WritePin(gpio->port,
                       gpio->pin,
