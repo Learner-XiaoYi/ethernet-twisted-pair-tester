@@ -3,6 +3,7 @@
 
 #include "bsp_gpio.h"
 #include "bsp_tim.h"
+#include "drv_relay.h"
 #include "bsp_adc.h"
 
 typedef struct
