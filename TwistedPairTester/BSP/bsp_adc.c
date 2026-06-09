@@ -49,3 +49,41 @@ HAL_StatusTypeDef BSP_ADC_StopDMA(ADC_HandleTypeDef *hadc)
     return HAL_ADC_Stop_DMA(hadc);
 }
 
+static uint32_t BSP_ADC_GetSampleTime(
+    BSP_ADC_SampleTime_t sample)
+{
+    switch(sample)
+    {
+        case BSP_ADC_SAMPLE_FAST:
+            return ADC_SAMPLETIME_3CYCLES;
+
+        case BSP_ADC_SAMPLE_MIDDLE:
+            return ADC_SAMPLETIME_15CYCLES;
+
+        case BSP_ADC_SAMPLE_SLOW:
+            return ADC_SAMPLETIME_480CYCLES;
+
+        default:
+            return ADC_SAMPLETIME_15CYCLES;
+    }
+}
+
+void BSP_ADC_Config(BSP_ADC_t *adc,BSP_ADC_SampleTime_t sample)
+{
+    ADC_ChannelConfTypeDef sConfig = {0};
+
+    sConfig.Channel = adc->channel;
+    sConfig.Rank = 1;
+    sConfig.SamplingTime =BSP_ADC_GetSampleTime(sample);
+
+    HAL_ADC_ConfigChannel(adc->hadc,&sConfig);
+}
+
+//回调
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+    if(hadc == &hadc1)
+    {
+        HAR_Cable_DMACompleteCallback();
+    }
+}
