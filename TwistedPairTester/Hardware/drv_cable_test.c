@@ -42,10 +42,10 @@ void HW_Cable_Init(void)
 
     for(i = 0; i < 8; i++)
     {
-        BSP_GPIO_Mode(tx_pin[i], GPIO_MODE_OUTPUT_PP);
+        BSP_GPIO_Mode(tx_pin[i], BSP_GPIO_MODE_OUTPUT_PP);
         BSP_GPIO_Write(&tx_pin[i], BSP_GPIO_LOW);
 
-        BSP_GPIO_Mode(rx_pin[i], GPIO_MODE_INPUT);
+        BSP_GPIO_Mode(rx_pin[i], BSP_GPIO_MODE_INPUT);
     }
 }
 
