@@ -1,6 +1,12 @@
 #include "drv_relay.h"
 
-static BSP_GPIO_t relay_pin[8] =
+static const uint8_t relay_num = 9;
+
+/*
+继电器
+*/
+
+static BSP_GPIO_t relay_pin[relay_num] =
 {
     {GPIOF, GPIO_PIN_0},
     {GPIOF, GPIO_PIN_1},
@@ -10,6 +16,7 @@ static BSP_GPIO_t relay_pin[8] =
     {GPIOF, GPIO_PIN_5},
     {GPIOF, GPIO_PIN_6},
     {GPIOF, GPIO_PIN_7},
+		{GPIOF, GPIO_PIN_8},
 };
 
 //默认全部关闭
@@ -17,7 +24,7 @@ void HW_Relay_Init(void)
 {
     uint8_t i;
 
-    for(i = 0; i < 8; i++)
+    for(i = 0; i < relay_num; i++)
     {
         BSP_GPIO_Mode(relay_pin[i], BSP_GPIO_MODE_OUTPUT_PP);
 
@@ -30,12 +37,12 @@ void HW_Relay_Select(uint8_t ch)
 {
     uint8_t i;
 
-    for(i = 0; i < 8; i++)
+    for(i = 0; i < relay_num; i++)
     {
         BSP_GPIO_Write(&relay_pin[i], BSP_GPIO_LOW);
     }
 
-    if(ch < 8)
+    if(ch < relay_num)
     {
         BSP_GPIO_Write(&relay_pin[ch], BSP_GPIO_HIGH);
     }
@@ -44,7 +51,7 @@ void HW_Relay_Select(uint8_t ch)
 //打开
 void HW_Relay_On(uint8_t ch)
 {
-    if(ch >= 8)
+    if(ch >= relay_num)
     {
         return;
     }
@@ -55,7 +62,7 @@ void HW_Relay_On(uint8_t ch)
 //关闭
 void HW_Relay_Off(uint8_t ch)
 {
-    if(ch >= 8)
+    if(ch >= relay_num)
     {
         return;
     }
@@ -68,7 +75,7 @@ void HW_Relay_AllOff(void)
 {
     uint8_t i;
 
-    for(i = 0; i < 8; i++)
+    for(i = 0; i < relay_num; i++)
     {
         BSP_GPIO_Write(&relay_pin[i], BSP_GPIO_LOW);
     }
