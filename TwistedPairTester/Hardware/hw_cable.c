@@ -1,11 +1,16 @@
 #include "hw_cable.h"
 
+/*
+	长度测量，采用1s计数，取第二秒	
+*/
+
 //PD0
 static BSP_GPIO_t length_meas_pin[] = {GPIOD, GPIO_PIN_1}; //长度测量线
 
+//长度测量初始化
 void Length_Init(void)
 {
-	
+	BSP_GPIO_Mode(length_meas_pin[0],BSP_GPIO_MODE_INPUT_PULLDOWN);
 }
 
 uint8_t HW_Length_Task(void)
