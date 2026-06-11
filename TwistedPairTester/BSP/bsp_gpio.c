@@ -1,12 +1,12 @@
 #include "bsp_gpio.h"
 
-//µ•¥Œ
+//ÂçïÊ¨°
 void BSP_GPIO_Init(void)
 {
     MX_GPIO_Init();
 }
 
-//÷ÿ∏¥
+//ÈáçÂ§ç
 void BSP_GPIO_Mode(BSP_GPIO_t gpio, BSP_GPIO_Mode_t mode)
 {
     GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -16,32 +16,32 @@ void BSP_GPIO_Mode(BSP_GPIO_t gpio, BSP_GPIO_Mode_t mode)
 
     switch(mode)
     {
-        case BSP_GPIO_MODE_INPUT:   					//∏°ø’ ‰»Î
+        case BSP_GPIO_MODE_INPUT:   					//ÊµÆÁ©∫ËæìÂÖ•
             GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
             GPIO_InitStruct.Pull = GPIO_NOPULL;
             break;
 
-        case BSP_GPIO_MODE_INPUT_PULLUP:     //…œ¿≠ ‰»Î
+        case BSP_GPIO_MODE_INPUT_PULLUP:     //‰∏äÊãâËæìÂÖ•
             GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
             GPIO_InitStruct.Pull = GPIO_PULLUP;
             break;
 
-        case BSP_GPIO_MODE_INPUT_PULLDOWN:   //œ¬¿≠ ‰»Î
+        case BSP_GPIO_MODE_INPUT_PULLDOWN:   //‰∏ãÊãâËæìÂÖ•
             GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
             GPIO_InitStruct.Pull = GPIO_PULLDOWN;
             break;
 
-        case BSP_GPIO_MODE_OUTPUT_PP:         //Õ∆ÕÏ ‰≥ˆ
+        case BSP_GPIO_MODE_OUTPUT_PP:         //Êé®ÊåΩËæìÂá∫
             GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
             GPIO_InitStruct.Pull = GPIO_NOPULL;
             break;
 
-        case BSP_GPIO_MODE_OUTPUT_OD:         //ø™¬© ‰≥ˆ
+        case BSP_GPIO_MODE_OUTPUT_OD:         //ÂºÄÊºèËæìÂá∫
             GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
             GPIO_InitStruct.Pull = GPIO_NOPULL;
             break;
 				
-				case BSP_GPIO_MODE_ANALOG:           //ƒ£ƒ‚ ‰»Î
+				case BSP_GPIO_MODE_ANALOG:           //Ê®°ÊãüËæìÂÖ•
 						GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
 						GPIO_InitStruct.Pull = GPIO_NOPULL;
 						break;
