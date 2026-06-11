@@ -4,6 +4,8 @@
 #include "main.h"
 #include "tim.h"
 
+#include "drv_key.h"
+
 void BSP_TIM_Init(void);
 
 uint32_t BSP_GetTick(void);

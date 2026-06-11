@@ -9,7 +9,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     if(htim->Instance == TIM2)
     {
-        ms_tick++;
+        ms_tick++;//计数
+        /*按键标志位*/
+        key_1ms_flag = 1; //1ms定时标志
     }
 }
 
