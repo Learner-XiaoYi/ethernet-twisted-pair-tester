@@ -23,20 +23,26 @@ uint8_t HW_Length_Task(void)
 //1s计数
 uint16_t HW_Length_GetCount(void)
 {
+	uint8_t connt = 0; 
 	uint16_t temp = 0;
 	uint16_t tick_last = 0;
 	uint8_t cnt = 0;
 	uint8_t cnt_last = 0;
 	
 	tick_last = BSP_GetTick();
-	while(BSP_GetTick() - tick_last< 1000)
+	while (connt < 2)
 	{
-		cnt = HW_Length_Task();
-		if((cnt == 1) && (cnt_last == 0))
+		while(BSP_GetTick() - tick_last< 1000)
 		{
-			temp ++;
+			temp = 0;
+			cnt = HW_Length_Task();
+			if((cnt == 1) && (cnt_last == 0))
+			{
+				temp ++;
+			}
+			cnt_last = cnt;
 		}
-		cnt_last = cnt;
+		connt ++;
 	}
 	return temp;
 }
