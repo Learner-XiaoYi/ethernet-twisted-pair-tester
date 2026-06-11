@@ -1,14 +1,18 @@
 #include "drv_key.h"
 
+//下拉输入
 
-static BSP_GPIO_t key_table[2] =
+const static uint8_t key_cont = 3;                 //按键数目
+
+static BSP_GPIO_t key_table[key_cont] =
 {
     {GPIOE, GPIO_PIN_4},
-    {GPIOE, GPIO_PIN_3}
+    {GPIOE, GPIO_PIN_3},
+    {GPIOE, GPIO_PIN_2}
 };
 
-static uint16_t key_cnt[2]; 						//分别记录两个按键的持续按下计时
-static uint8_t key_state[2];						//分别记录两个按键的状态
+static uint16_t key_cnt[key_cont]; 						//分别记录按键的持续按下计时
+static uint8_t key_state[key_cont];						//分别记录按键的状态
 
 static KEY_EVENT_t key_event = KEY_NONE;
 
@@ -20,7 +24,7 @@ uint8_t KEY_Read(uint8_t id)
 volatile uint8_t key_1ms_flag = 0; //1ms定时标志
 void KEY_Scan(void)
 {
-    for(uint8_t i = 0; i < 2; i++)
+    for(uint8_t i = 0; i < key_cont; i++)
     {
         if(KEY_Read(i) == BSP_GPIO_LOW)   // 按下
         {
