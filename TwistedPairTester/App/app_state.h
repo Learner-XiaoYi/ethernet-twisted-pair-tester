@@ -2,6 +2,8 @@
 #define __APP_STATE_H
 
 #include "main.h"
+#include "drv_key.h"
+#include "drv_cable_test.h"
 
 typedef enum
 {
