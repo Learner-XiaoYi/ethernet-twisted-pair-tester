@@ -7,7 +7,7 @@
 #include "drv_adc_cable.h"
 
 #define SER_FFT_SIZE    4096
-//ø’‘ÿ≤‚¡ø
+//Á©∫ËΩΩÊµãÈáè
 #define SER_REF_MAG     58238.0f   
 
 void SER_FFT_Init(void);
