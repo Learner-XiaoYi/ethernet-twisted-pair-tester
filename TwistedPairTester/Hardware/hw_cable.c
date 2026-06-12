@@ -21,29 +21,37 @@ uint8_t HW_Length_Task(void)
 }
 
 //1s计数
-uint16_t HW_Length_GetCount(void)
+uint32_t lin_connst = 0;
+int HW_Length_GetCount(void)
 {
-	uint8_t connt = 0; 
-	uint16_t temp = 0;
-	uint16_t tick_last = 0;
-	uint8_t cnt = 0;
-	uint8_t cnt_last = 0;
+	static uint8_t connt = 0; 
+	static uint16_t temp = 0;
+	static uint16_t tick_last = 0;
+	static uint8_t cnt = 0;        //当前电平值
+	static uint8_t cnt_last = 0;  //上次电平值
 	
 	tick_last = BSP_GetTick();
-	while (connt < 2)
+	if(lin_connst < 1000)
 	{
-		while(BSP_GetTick() - tick_last< 1000)
+		cnt = HW_Length_Task();
+		if((cnt == 1) && (cnt_last == 0))
 		{
-			temp = 0;
-			cnt = HW_Length_Task();
-			if((cnt == 1) && (cnt_last == 0))
-			{
-				temp ++;
-			}
-			cnt_last = cnt;
+			temp ++;
 		}
-		connt ++;
+		cnt_last = cnt;
+		return -1;
 	}
-	return temp;
+	else if(connt < 2)
+	{
+		connt ++;
+//		lin_connst = 0;
+		return -1;
+	}
+	else
+	{
+		connt = 0;
+		lin_connst = 0;//清0
+		return  temp;
+	}
 }
 

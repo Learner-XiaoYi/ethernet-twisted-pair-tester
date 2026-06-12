@@ -4,8 +4,10 @@
 #include "bsp_gpio.h"
 #include "bsp_tim.h"
 
+extern uint32_t lin_connst;//计数2s
+
 void Length_Init(void);
-uint16_t HW_Length_GetCount(void);
+int HW_Length_GetCount(void);
 
 #endif
 
