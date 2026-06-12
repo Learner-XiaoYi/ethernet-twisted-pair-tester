@@ -12,6 +12,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         ms_tick++;//计数
         /*按键标志位*/
         key_1ms_flag = 1; //1ms定时标志
+        /*频率计数*/
+        lin_connst ++;
     }
 }
 
