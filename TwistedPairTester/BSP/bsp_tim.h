@@ -5,6 +5,7 @@
 #include "tim.h"
 
 #include "drv_key.h"
+#include "hw_cable.h"
 
 void BSP_TIM_Init(void);
 
