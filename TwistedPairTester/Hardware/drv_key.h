@@ -19,6 +19,7 @@ typedef enum
 }KEY_EVENT_t;
 
 extern volatile uint8_t key_1ms_flag; //1ms定时标志
+void KEY_Scan(void);
 KEY_EVENT_t KEY_GetEvent(void);
 
 
