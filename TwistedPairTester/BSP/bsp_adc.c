@@ -8,7 +8,7 @@ uint16_t BSP_ADC_Read(BSP_ADC_t *adc)
     // 配置通道
     sConfig.Channel = adc->channel;
     sConfig.Rank = 1; // 对应 ADC_REGULAR_RANK_1，
-    sConfig.SamplingTime = ADC_SAMPLETIME_480CYCLES; // 对应 HAL 宏，确保HAL版本支持
+    sConfig.SamplingTime = ADC_SAMPLETIME_480CYCLES; // HAL 宏
 
 
     HAL_ADC_ConfigChannel(adc->hadc, &sConfig);
