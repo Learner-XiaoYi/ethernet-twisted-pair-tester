@@ -9,6 +9,7 @@ typedef enum {
 } CableType_t;
 extern CableType_t cable;
 
+void HW_Cable_Init(void);
 void CableTest_Init(void);
 void CableType_Detect(void);
 uint8_t CableTest_RunOnce(void);

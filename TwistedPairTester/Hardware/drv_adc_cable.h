@@ -7,6 +7,7 @@
 
 #define HAR_CABLE_FFT_SIZE    4096
 
+void HAR_Cable_Init(void);
 void DRV_ADC_Cable_Init(void);
 void HAR_Cable_StartSample(void);
 uint8_t HAR_Cable_IsReady(void);

@@ -7,7 +7,7 @@ const float CnumTemp_UTP = 65.0;
 
 //频率转电容  Ctemp = (1 / (0.693147 * (Res1 + 2 * Res2) * FreqNum)) * 1000000000000;
 //freq，校准频率
-float Length_ConvertFreqToCap(int freq);
+float Length_ConvertFreqToCap(int freq)
 {
 	int FreqNum = 0;
 	float Ctemp = 0;
