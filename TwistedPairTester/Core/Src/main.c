@@ -26,6 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "app.h"
 
 
 /* USER CODE END Includes */
@@ -101,8 +102,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  APP_Init();
   while (1)
   {
+    APP_Run();
+    
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
