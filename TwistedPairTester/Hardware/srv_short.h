@@ -13,6 +13,10 @@ typedef struct
     uint8_t    relay_id;
 } HW_ChannelMap_t;
 
+typedef struct
+{
+    uint8_t map[8];
+} HW_ShortResult_t;
 
 #endif
 

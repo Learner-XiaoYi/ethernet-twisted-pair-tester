@@ -27,10 +27,10 @@ static BSP_GPIO_t pin[8] =
     {GPIOB, GPIO_PIN_0},
 };
 
-typedef struct
-{
-    uint8_t map[8];
-} HW_ShortResult_t;
+//typedef struct
+//{
+//    uint8_t map[8];
+//} HW_ShortResult_t;
 
 
 void HW_Short_Init(void)
