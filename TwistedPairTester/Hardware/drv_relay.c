@@ -16,7 +16,7 @@ static BSP_GPIO_t relay_pin[relay_num] =
     {GPIOF, GPIO_PIN_5},
     {GPIOF, GPIO_PIN_6},
     {GPIOF, GPIO_PIN_7},
-		{GPIOF, GPIO_PIN_8},
+	{GPIOF, GPIO_PIN_8},
 };
 
 //默认全部关闭
